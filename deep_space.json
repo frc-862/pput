@@ -1,0 +1,23 @@
+{
+  "name": "Deep Space",
+  "robots": [
+    "robot.json"
+  ],
+  "modes": [
+    {
+      "mode": "auton",
+      "mode_time": 15,
+      "next_mode": 1
+    },
+    {
+      "mode": "teleop",
+      "mode_time": 105,
+      "next_mode": 2
+    },
+    {
+      "mode": "endgame",
+      "mode_time": 30,
+      "next_mode": -1
+    }
+  ]
+}

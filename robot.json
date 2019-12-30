@@ -1,0 +1,36 @@
+{
+  "name": "Nebula",
+  "operations": "operations.json",
+  "modes": {
+    "auton": [
+      {
+        "name": "Collect Hatch Pannel near loading station",
+        "priority": 5
+      },
+      {
+        "name": "Collect Hatch Pannel far loading station",
+        "priority": 1
+      }
+    ],
+    "teleop": [
+      {
+        "name": "Collect Hatch Pannel near loading station",
+        "priority": 5
+      },
+      {
+        "name": "Collect Hatch Pannel far loading station",
+        "priority": 1
+      }
+    ],
+    "endgame": [
+      {
+        "name": "Collect Hatch Pannel near loading station",
+        "priority": 5
+      },
+      {
+        "name": "Collect Hatch Pannel far loading station",
+        "priority": 1
+      }
+    ]
+  }
+}
