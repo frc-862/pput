@@ -1,0 +1,7 @@
+{
+  "name": "Drive off Hab 1",
+  "operations": "operations.json",
+  "modes": {
+    "auton": [ { "name": "drive_off_hab1" } ]
+  }
+}
