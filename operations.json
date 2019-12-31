@@ -15,6 +15,21 @@
     "limit": 1
   },
   {
+    "name": "drive_off_hab2",
+    "game_modes": {
+      "auton": {
+        "points": 6,
+        "time": 1,
+        "low": 0.5,
+        "std": 0.5,
+        "retry_odds": 0.1,
+        "failure_odds": 0.08,
+        "next_op": []
+      }
+    },
+    "limit": 1
+  },
+  {
     "name": "Hatch Pannel low near rocket",
     "game_modes": {
       "teleop": {

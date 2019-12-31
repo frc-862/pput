@@ -1,8 +1,15 @@
 {
   "name": "Deep Space PPUT",
-  "robots": [
-    "drive_off_hab1.json"
-  ],
+  "robots": [],
+  "pput": {
+      "operations": "operations.json",
+      "auton": [
+        "drive_off_hab1",
+        "drive_off_hab2"
+       ],
+       "teleop": [],
+       "endgame": []
+  },
   "modes": [
     {
       "mode": "auton",
