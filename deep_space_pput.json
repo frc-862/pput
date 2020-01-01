@@ -4,8 +4,9 @@
   "pput": {
       "operations": "operations.json",
       "auton": [
-        "drive_off_hab1",
-        "drive_off_hab2"
+          "drive_off_hab1",
+          "drive_off_hab2",
+          "Hatch Pannel low near rocket"
        ],
        "teleop": [],
        "endgame": []
