@@ -1,4 +1,4 @@
-[ 
+[
   {
     "name": "drive_off_hab1",
     "game_modes": {
@@ -30,7 +30,100 @@
     "limit": 1
   },
   {
+    "name": "collect_near",
+    "game_modes": {
+      "auton": {
+        "points": 0,
+        "time": 1,
+        "low": 0.5,
+        "std": 0.5,
+        "retry_odds": 0.1,
+        "failure_odds": 0.08,
+        "next_op": [
+          "Drive NR"
+        ]
+      },
+      "teleop": {
+        "points": 0,
+        "time": 1,
+        "low": 0.5,
+        "std": 0.5,
+        "retry_odds": 0.1,
+        "failure_odds": 0.08,
+        "next_op": [
+          "Drive NR"
+        ]
+      }
+    },
+    "limit": 1
+  },
+  {
+    "name": "drive_to_near",
+    "game_modes": {
+      "teleop": {
+        "points": 0,
+        "time": 4,
+        "low": 1,
+        "std": 2,
+        "retry_odds": 0.99,
+        "failure_odds": 0.25,
+        "next_op": []
+      }
+    }
+  },
+  {
+    "name": "drive_to_far",
+    "game_modes": {
+      "teleop": {
+        "points": 0,
+        "time": 7,
+        "low": 3,
+        "std": 2,
+        "retry_odds": 0.99,
+        "failure_odds": 0.25,
+        "next_op": []
+      }
+    }
+  },
+  {
+    "name": "Drive NR",
+    "game_modes": {
+      "teleop": {
+        "points": 0,
+        "time": 4,
+        "low": 1,
+        "std": 2,
+        "retry_odds": 0.9,
+        "failure_odds": 0.25,
+        "next_op": []
+      }
+    }
+  },
+  {
     "name": "Hatch Pannel low near rocket",
+    "game_modes": {
+      "teleop": {
+        "points": 2,
+        "time": 4,
+        "low": 2,
+        "std": 2,
+        "retry_odds": 0.1,
+        "failure_odds": 0.2,
+        "next_op": []
+      },
+      "auton": {
+        "points": 4,
+        "time": 8,
+        "low": 2,
+        "std": 2,
+        "retry_odds": 0.1,
+        "failure_odds": 0.2,
+        "next_op": []
+      }
+    },
+    "limit": 1
+  },  {
+    "name": "place_low",
     "game_modes": {
       "teleop": {
         "points": 2,

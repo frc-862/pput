@@ -3,12 +3,15 @@
   "robots": [],
   "pput": {
       "operations": "operations.json",
-      "auton": [
-          "drive_off_hab1",
-          "drive_off_hab2",
-          "Hatch Pannel low near rocket"
+
+       "auton": [
+           "drive_off_hab1",
+           "drive_off_hab2"
        ],
-       "teleop": [],
+       "teleop": [
+           [ "Score NRL", "collect_near", "drive_to_near", "place_low" ],
+           [ "Score FRL", "collect_near", "drive_to_far", "place_low" ]
+       ],
        "endgame": []
   },
   "modes": [
