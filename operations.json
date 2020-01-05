@@ -1,793 +1,199 @@
 [
   {
-    "name": "drive_off_hab1",
+    "name": "initiation_line",
     "game_modes": {
       "auton": {
+        "points": 5,
+        "time": 1,
+        "low": 0.5,
+        "std": 0.5,
+        "retry_odds": 0,
+        "failure_odds": 0,
+        "next_op": []
+      }
+    },
+    "limit": 1
+  },
+  {
+    "name": "shoot_low",
+    "game_modes": {
+      "auton": {
+        "points": 2,
+        "time": 1,
+        "low": 0.5,
+        "std": 0.5,
+        "retry_odds": 0,
+        "failure_odds": 0,
+        "next_op": []
+      },
+      "teleop": {
+        "points": 1,
+        "time": 1,
+        "low": 0.5,
+        "std": 0.5,
+        "retry_odds": 0,
+        "failure_odds": 0,
+        "next_op": []
+      }
+    }
+  },
+  {
+    "name": "shoot_outer",
+    "game_modes": {
+      "auton": {
+        "points": 4,
+        "time": 1,
+        "low": 0.5,
+        "std": 0.5,
+        "retry_odds": 0,
+        "failure_odds": 0,
+        "next_op": []
+      },
+      "teleop": {
+        "points": 2,
+        "time": 1,
+        "low": 0.5,
+        "std": 0.5,
+        "retry_odds": 0,
+        "failure_odds": 0,
+        "next_op": []
+      }
+    }
+  },
+  {
+    "name": "shoot_inner",
+    "game_modes": {
+      "auton": {
+        "points": 6,
+        "time": 1,
+        "low": 0.5,
+        "std": 0.5,
+        "retry_odds": 0,
+        "failure_odds": 0.4,
+        "next_op": []
+      },
+      "teleop": {
         "points": 3,
         "time": 1,
         "low": 0.5,
         "std": 0.5,
-        "retry_odds": 0.1,
+        "retry_odds": 0,
+        "failure_odds": 0.7,
+        "next_op": []
+      }
+    }
+  },
+  {
+    "name": "collect_cell",
+    "game_modes": {
+      "teleop": {
+        "points": 0,
+        "time": 1.5,
+        "low": 0.5,
+        "std": 0.5,
+        "retry_odds": 0,
+        "failure_odds": 0.2,
+        "next_op": []
+      }
+    }
+  },
+  {
+    "name": "drive_field",
+    "game_modes": {
+      "teleop": {
+        "points": 0,
+        "time": 6,
+        "low": 4,
+        "std": 2,
+        "retry_odds": 0,
+        "failure_odds": 0,
+        "next_op": []
+      }
+    }
+  },
+  {
+    "name": "drive_to_center",
+    "game_modes": {
+      "teleop": {
+        "points": 0,
+        "time": 4,
+        "low": 2,
+        "std": 1,
+        "retry_odds": 0,
+        "failure_odds": 0,
+        "next_op": []
+      }
+    }
+  },
+  {
+    "name": "rotate_cp",
+    "game_modes": {
+      "teleop": {
+        "points": 10,
+        "time": 6,
+        "low": 4,
+        "std": 2,
+        "retry_odds": 0.99,
+        "failure_odds": 0.1,
+        "next_op": []
+      }
+    }
+  },
+  {
+    "name": "position_cp",
+    "game_modes": {
+      "teleop": {
+        "points": 20,
+        "time": 5,
+        "low": 1,
+        "std": 3,
+        "retry_odds": 1,
+        "failure_odds": 0.1,
+        "next_op": []
+      }
+    }
+  },
+  {
+    "name": "attach_to_bar",
+    "game_modes": {
+      "teleop": {
+        "points": 0,
+        "time": 1,
+        "low": 0.5,
+        "std": 0.5,
+        "retry_odds": 0.9,
         "failure_odds": 0.05,
         "next_op": []
       }
-    },
-    "limit": 1
-  },
-  {
-    "name": "drive_off_hab2",
-    "game_modes": {
-      "auton": {
-        "points": 6,
-        "time": 1,
-        "low": 0.5,
-        "std": 0.5,
-        "retry_odds": 0.1,
-        "failure_odds": 0.08,
-        "next_op": []
-      }
-    },
-    "limit": 1
-  },
-  {
-    "name": "collect_near",
-    "game_modes": {
-      "auton": {
-        "points": 0,
-        "time": 1,
-        "low": 0.5,
-        "std": 0.5,
-        "retry_odds": 0.1,
-        "failure_odds": 0.08,
-        "next_op": [
-          "Drive NR"
-        ]
-      },
-      "teleop": {
-        "points": 0,
-        "time": 1,
-        "low": 0.5,
-        "std": 0.5,
-        "retry_odds": 0.1,
-        "failure_odds": 0.08,
-        "next_op": [
-          "Drive NR"
-        ]
-      }
-    },
-    "limit": 1
-  },
-  {
-    "name": "drive_to_near",
-    "game_modes": {
-      "teleop": {
-        "points": 0,
-        "time": 4,
-        "low": 1,
-        "std": 2,
-        "retry_odds": 0.99,
-        "failure_odds": 0.25,
-        "next_op": []
-      }
     }
   },
   {
-    "name": "drive_to_far",
+    "name": "climb",
     "game_modes": {
-      "teleop": {
-        "points": 0,
-        "time": 7,
-        "low": 3,
-        "std": 2,
-        "retry_odds": 0.99,
-        "failure_odds": 0.25,
-        "next_op": []
-      }
-    }
-  },
-  {
-    "name": "Drive NR",
-    "game_modes": {
-      "teleop": {
-        "points": 0,
-        "time": 4,
-        "low": 1,
-        "std": 2,
-        "retry_odds": 0.9,
-        "failure_odds": 0.25,
-        "next_op": []
-      }
-    }
-  },
-  {
-    "name": "Hatch Pannel low near rocket",
-    "game_modes": {
-      "teleop": {
-        "points": 2,
-        "time": 4,
-        "low": 2,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": []
-      },
-      "auton": {
-        "points": 4,
-        "time": 8,
-        "low": 2,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": []
-      }
-    },
-    "limit": 1
-  },  {
-    "name": "place_low",
-    "game_modes": {
-      "teleop": {
-        "points": 2,
-        "time": 4,
-        "low": 2,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": []
-      },
-      "auton": {
-        "points": 4,
-        "time": 8,
-        "low": 2,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": []
-      }
-    },
-    "limit": 1
-  },
-  {
-    "name": "Hatch Pannel middle near rocket",
-    "game_modes": {
-      "teleop": {
-        "points": 2,
-        "time": 5,
-        "low": 2,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": []
-      },
-      "auton": {
-        "points": 4,
-        "time": 8,
-        "low": 2,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": []
-      }
-    },
-    "limit": 1
-  },
-  {
-    "name": "Hatch Pannel high near rocket",
-    "game_modes": {
-      "teleop": {
-        "points": 2,
-        "time": 4,
-        "low": 2,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": []
-      },
-      "auton": {
-        "points": 4,
-        "time": 8,
-        "low": 3,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": []
-      }
-    },
-    "limit": 1
-  },
-  {
-    "name": "Hatch Pannel high far rocket",
-    "game_modes": {
-      "teleop": {
-        "points": 2,
-        "time": 8,
-        "low": 4,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.25,
-        "next_op": []
-      },
-      "auton": {
-        "points": 4,
-        "time": 10,
-        "low": 5,
-        "std": 2,
-        "retry_odds": 0,
-        "failure_odds": 0.33,
-        "next_op": []
-      }
-    },
-    "limit": 1
-  },
-  {
-    "name": "Hatch Pannel middle far opposite side rocket",
-    "game_modes": {
-      "teleop": {
-        "points": 2,
-        "time": 7,
-        "low": 4,
-        "std": 2,
-        "retry_odds": 0.05,
-        "failure_odds": 0.25,
-        "next_op": []
-      },
-      "auton": {
-        "points": 4,
-        "time": 9,
-        "low": 5,
-        "std": 2,
-        "retry_odds": 0,
-        "failure_odds": 0.33,
-        "next_op": []
-      }
-    },
-    "limit": 1
-  },
-  {
-    "name": "Hatch Pannel low far opposite side rocket",
-    "game_modes": {
-      "teleop": {
-        "points": 2,
-        "time": 6,
-        "low": 4,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.25,
-        "next_op": []
-      },
-      "auton": {
-        "points": 4,
-        "time": 7,
-        "low": 4,
-        "std": 2,
-        "retry_odds": 0,
-        "failure_odds": 0.33,
-        "next_op": []
-      }
-    },
-    "limit": 1
-  },
-  {
-    "name": "Hatch Pannel low near opposite side rocket",
-    "game_modes": {
-      "teleop": {
-        "points": 2,
-        "time": 4,
-        "low": 2,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": []
-      },
-      "auton": {
-        "points": 4,
-        "time": 8,
-        "low": 2,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": []
-      }
-    },
-    "limit": 1
-  },
-  {
-    "name": "Hatch Pannel middle near opposite side rocket",
-    "game_modes": {
-      "teleop": {
-        "points": 2,
-        "time": 5,
-        "low": 2,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": []
-      },
-      "auton": {
-        "points": 4,
-        "time": 8,
-        "low": 2,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": []
-      }
-    },
-    "limit": 1
-  },
-  {
-    "name": "Hatch Pannel high near opposite side rocket",
-    "game_modes": {
-      "teleop": {
-        "points": 2,
-        "time": 4,
-        "low": 2,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": []
-      },
-      "auton": {
-        "points": 4,
-        "time": 8,
-        "low": 3,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": []
-      }
-    },
-    "limit": 1
-  },
-  {
-    "name": "Hatch Pannel high far opposite side rocket",
-    "game_modes": {
-      "teleop": {
-        "points": 2,
-        "time": 8,
-        "low": 4,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.25,
-        "next_op": []
-      },
-      "auton": {
-        "points": 4,
-        "time": 10,
-        "low": 5,
-        "std": 2,
-        "retry_odds": 0,
-        "failure_odds": 0.33,
-        "next_op": []
-      }
-    },
-    "limit": 1
-  },
-  {
-    "name": "Hatch Pannel middle far opposite side rocket",
-    "game_modes": {
-      "teleop": {
-        "points": 2,
-        "time": 7,
-        "low": 4,
-        "std": 2,
-        "retry_odds": 0.05,
-        "failure_odds": 0.25,
-        "next_op": []
-      },
-      "auton": {
-        "points": 4,
-        "time": 9,
-        "low": 5,
-        "std": 2,
-        "retry_odds": 0,
-        "failure_odds": 0.33,
-        "next_op": []
-      }
-    },
-    "limit": 1
-  },
-  {
-    "name": "Hatch Pannel low far opposite side rocket",
-    "game_modes": {
-      "teleop": {
-        "points": 2,
-        "time": 6,
-        "low": 4,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.25,
-        "next_op": []
-      },
-      "auton": {
-        "points": 4,
-        "time": 7,
-        "low": 4,
-        "std": 2,
-        "retry_odds": 0,
-        "failure_odds": 0.33,
-        "next_op": []
-      }
-    },
-    "limit": 1
-  },
-  {
-    "name": "Collect Hatch Pannel near loading station",
-    "game_modes": {
-      "teleop": {
-        "points": 0,
-        "time": 4,
-        "low": 1,
-        "std": 2,
-        "retry_odds": 0.9,
-        "failure_odds": 0.25,
-        "next_op": [
-          "Hatch Pannel low near rocket",
-          "Hatch Pannel middle near rocket",
-          "Hatch Pannel high near rocket",
-          "Hatch Pannel low far rocket",
-          "Hatch Pannel middle far rocket",
-          "Hatch Pannel high far rocket",
-          "Hatch Pannel low near opposite side rocket",
-          "Hatch Pannel middle near opposite side rocket",
-          "Hatch Pannel high near opposite side rocket",
-          "Hatch Pannel low far opposite side rocket",
-          "Hatch Pannel middle far opposite side rocket",
-          "Hatch Pannel high far opposite side rocket"
-        ]
-      },
-      "auton": {
-        "points": 0,
-        "time": 7,
-        "low": 3,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": [
-          "Hatch Pannel low near rocket",
-          "Hatch Pannel middle near rocket",
-          "Hatch Pannel high near rocket",
-          "Hatch Pannel low far rocket",
-          "Hatch Pannel middle far rocket",
-          "Hatch Pannel high far rocket",
-          "Hatch Pannel low near opposite side rocket",
-          "Hatch Pannel middle near opposite side rocket",
-          "Hatch Pannel high near opposite side rocket",
-          "Hatch Pannel low far opposite side rocket",
-          "Hatch Pannel middle far opposite side rocket",
-          "Hatch Pannel high far opposite side rocket"
-        ]
-      }
-    },
-    "limit": 0
-  },
-  {
-    "name": "Collect Hatch Pannel far loading station",
-    "game_modes": {
-      "teleop": {
-        "points": 0,
-        "time": 4,
-        "low": 1,
-        "std": 2,
-        "retry_odds": 0.9,
-        "failure_odds": 0.25,
-        "next_op": []
-      },
-      "auton": {
-        "points": 0,
-        "time": 7,
-        "low": 5,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": [
-          "Hatch Pannel low near rocket",
-          "Hatch Pannel middle near rocket",
-          "Hatch Pannel high near rocket",
-          "Hatch Pannel low far rocket",
-          "Hatch Pannel middle far rocket",
-          "Hatch Pannel high far rocket",
-          "Hatch Pannel low near opposite side rocket",
-          "Hatch Pannel middle near opposite side rocket",
-          "Hatch Pannel high near opposite side rocket",
-          "Hatch Pannel low far opposite side rocket",
-          "Hatch Pannel middle far opposite side rocket",
-          "Hatch Pannel high far opposite side rocket"
-        ]
-      }
-    },
-    "limit": 0
-  },
-  {
-    "name": "Collect Cargo far loading station",
-    "game_modes": {
-      "teleop": {
-        "points": 0,
-        "time": 4,
-        "low": 1,
-        "std": 2,
-        "retry_odds": 0.9,
-        "failure_odds": 0.15,
-        "next_op": []
-      },
-      "auton": {
-        "points": 0,
-        "time": 10,
-        "low": 5,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": [
-          "score Cargo cargoship",
-          "Cargo low near rocket",
-          "Cargo middle near rocket",
-          "Cargo high near rocket",
-          "Cargo low far rocket",
-          "Cargo middle far rocket",
-          "Cargo high far rocket"
-        ]
-      }
-    },
-    "limit": 0
-  },
-  {
-    "name": "Collect Cargo near loading station",
-    "game_modes": {
-      "teleop": {
-        "points": 0,
-        "time": 4,
-        "low": 1,
-        "std": 2,
-        "retry_odds": 0.9,
-        "failure_odds": 0.15,
-        "next_op": [
-          "score Cargo cargoship",
-          "Cargo low near rocket",
-          "Cargo middle near rocket",
-          "Cargo high near rocket",
-          "Cargo low far rocket",
-          "Cargo middle far rocket",
-          "Cargo high far rocket"
-        ]
-      },
       "endgame": {
-        "points": 0,
+        "points": 25,
         "time": 10,
-        "low": 5,
+        "low": 4,
         "std": 2,
         "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": [
-          "score Cargo cargoship",
-          "Cargo low near rocket",
-          "Cargo middle near rocket",
-          "Cargo high near rocket",
-          "Cargo low far rocket",
-          "Cargo middle far rocket",
-          "Cargo high far rocket"
-        ]
-      }
-    },
-    "limit": 0
-  },
-  {
-    "name": "Collect Cargo ground",
-    "game_modes": {
-      "teleop": {
-        "points": 0,
-        "time": 5,
-        "low": 2,
-        "std": 5,
-        "retry_odds": 0.9,
-        "failure_odds": 0.15,
-        "next_op": [
-          "score Cargo cargoship",
-          "Cargo low near rocket",
-          "Cargo middle near rocket",
-          "Cargo high near rocket",
-          "Cargo low far rocket",
-          "Cargo middle far rocket",
-          "Cargo high far rocket"
-        ]
-      },
-      "endgame": {
-        "points": 0,
-        "time": 5,
-        "low": 2,
-        "std": 5,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": [
-          "Cargo low near rocket",
-          "Cargo middle near rocket",
-          "Cargo high near rocket",
-          "Cargo low far rocket",
-          "Cargo middle far rocket",
-          "Cargo high far rocket",
-          "score Cargo cargoship"
-        ]
-      }
-    },
-    "limit": 0
-  },
-  {
-    "name": "Collect Cargo landfill",
-    "game_modes": {
-      "teleop": {
-        "points": 0,
-        "time": 4,
-        "low": 1,
-        "std": 2,
-        "retry_odds": 0.9,
-        "failure_odds": 0.15,
-        "next_op": [
-          "score Cargo cargoship",
-          "Cargo low near rocket",
-          "Cargo middle near rocket",
-          "Cargo high near rocket",
-          "Cargo low far rocket",
-          "Cargo middle far rocket",
-          "Cargo high far rocket"
-        ]
-      },
-      "endgame": {
-        "points": 0,
-        "time": 10,
-        "low": 5,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": [
-          "score Cargo cargoship",
-          "Cargo low near rocket",
-          "Cargo middle near rocket",
-          "Cargo high near rocket",
-          "Cargo low far rocket",
-          "Cargo middle far rocket",
-          "Cargo high far rocket"
-        ]
-      }
-    },
-    "limit": 12
-  },
-  {
-    "name": "score Cargo cargoship",
-    "game_modes": {
-      "teleop": {
-        "points": 3,
-        "time": 4,
-        "low": 1,
-        "std": 2,
-        "retry_odds": 0.9,
-        "failure_odds": 0.15,
-        "next_op": []
-      },
-      "endgame": {
-        "points": 3,
-        "time": 4,
-        "low": 1,
-        "std": 2,
-        "retry_odds": 0.75,
         "failure_odds": 0.1,
-        "next_op": "Climb level 1"
+        "next_op": []
       }
-    },
-    "limit": 8
+    }
   },
+
   {
-    "name": "Climb level 1",
+    "name": "park_at_center",
     "game_modes": {
       "endgame": {
-        "points": 3,
+        "points": 5,
         "time": 2,
-        "low": 1,
-        "std": 1,
-        "retry_odds": 0.9,
-        "failure_odds": 0.1,
-        "next_op": "Climb level 3"
-      }
-    },
-    "limit": 1
-  },
-  {
-    "name": "Climb level 3",
-    "game_modes": {
-      "endgame": {
-        "points": 12,
-        "time": 10,
-        "low": 5,
-        "std": 3,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
+        "low": 0.5,
+        "std": 0.5,
+        "retry_odds": 0,
+        "failure_odds": 0,
         "next_op": []
       }
-    },
-    "limit": 1
-  },
-  {
-    "name": "Climb level 2",
-    "game_modes": {
-      "endgame": {
-        "points": 6,
-        "time": 6,
-        "low": 3,
-        "std": 1,
-        "retry_odds": 0.5,
-        "failure_odds": 0.15,
-        "next_op": []
-      }
-    },
-    "limit": 1
-  },
-  {
-    "name": "cargo low near rocket",
-    "game_modes": {
-      "teleop": {
-        "points": 3,
-        "time": 3,
-        "low": 1,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": []
-      },
-      "endgame": {
-        "points": 3,
-        "time": 8,
-        "low": 2,
-        "std": 2,
-        "retry_odds": 0.3,
-        "failure_odds": 0.2,
-        "next_op": []
-      }
-    },
-    "limit": 1
-  },
-  {
-    "name": "cargo middle near rocket",
-    "game_modes": {
-      "teleop": {
-        "points": 3,
-        "time": 5,
-        "low": 3,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": []
-      },
-      "endgame": {
-        "points": 3,
-        "time": 5,
-        "low": 3,
-        "std": 2,
-        "retry_odds": 0.2,
-        "failure_odds": 0.2,
-        "next_op": []
-      }
-    },
-    "limit": 1
-  },
-  {
-    "name": "cargo high near rocket",
-    "game_modes": {
-      "teleop": {
-        "points": 3,
-        "time": 5,
-        "low": 3,
-        "std": 2,
-        "retry_odds": 0.1,
-        "failure_odds": 0.2,
-        "next_op": []
-      },
-      "endgame": {
-        "points": 3,
-        "time": 5,
-        "low": 3,
-        "std": 2,
-        "retry_odds": 0.2,
-        "failure_odds": 0.2,
-        "next_op": []
-      }
-    },
-    "limit": 1
+    }
   }
 ]

@@ -1,0 +1,42 @@
+{
+  "name": "Infinite Recharge PPUT",
+  "robots": [],
+  "pput": {
+      "operations": "operations.json",
+
+       "auton": [
+           "initiation_line",
+           [ "powercell_auto_bottom", "shoot_low" ],
+           [ "powercell_auto_outer", "shoot_outer" ],
+           [ "powercell_auto_inner", "shoot_inner" ]
+       ],
+       "teleop": [
+           [ "powercell_bottom", "collect_cell", "drive_field", "shoot_low" ],
+           [ "powercell_outer",  "collect_cell", "drive_field", "shoot_outer" ],
+           [ "powercell_inner",  "collect_cell", "drive_field", "shoot_inner" ],
+           [ "rotate_control_panel", "drive_to_center", "rotate_cp" ],
+           [ "position_control_panel", "drive_to_center", "position_cp"]
+       ],
+       "endgame": [
+           [ "hang", "drive_to_center", "attach_to_bar", "climb" ],
+           [ "park", "drive_to_center", "park_at_center" ]
+       ]
+  },
+  "modes": [
+    {
+      "mode": "auton",
+      "mode_time": 15,
+      "next_mode": 1
+    },
+    {
+      "mode": "teleop",
+      "mode_time": 105,
+      "next_mode": 2
+    },
+    {
+      "mode": "endgame",
+      "mode_time": 30,
+      "next_mode": -1
+    }
+  ]
+}
