@@ -1,0 +1,68 @@
+name = 'Shoot High Tele collect 2'
+oddsToCollect = 80.0
+startTime = 0
+ballsHeld = 0
+oddsHighShot = 90
+points = 0
+cycle = 0
+ballsScored = 0
+
+# Start in first state in file (waitForTele)
+
+forceStateAtTime('report', 150)
+
+waitForTele:
+  clock > 15:
+    newState('driveToCollect')
+    startTime = clock
+
+driveToCollect:
+  True:
+    driveTime=sleepRange(.5, 7, 5)
+    newState('collect')
+
+collect:
+  True:
+    sleepRange(0.5, 1.5, 1)
+    if odds(oddsToCollect):
+      ballsHeld += 1
+    if ballsHeld == 2:
+      newState('driveToShoot')
+    else:
+      newState('driveToCollect')
+
+
+driveToShoot:
+  True:
+    sleepRange(0, 1, 1)
+    newState('aim')
+
+aim:
+  True:
+    sleepRange(0.75, 2.5, 1.25)
+    newState('shoot')
+
+shoot:
+  True:
+    sleepRange(0.25, 0.5, 0.2)
+    ballsHeld -= 1
+    if odds(oddsHighShot):
+      ballsScored += 1
+      points += 2
+    if ballsHeld <= 0:
+      cycle += 1
+      newState('driveToCollect')
+
+report:
+  True:
+    totalTime = clock - startTime
+    statistics[name] = {
+      'total_points': points,
+      'totalTime': totalTime,
+      'pput': points / totalTime,
+      'Balls Scored': ballsScored,
+      'cycle': cycle
+    }
+    newState('stop')
+
+stop:

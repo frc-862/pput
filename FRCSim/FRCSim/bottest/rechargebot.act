@@ -1,0 +1,25 @@
+name = 'average bot'
+
+attribs = {
+'driverSpeedSkill' : 50,
+'driverPercisionSkill' : 50,
+'robotSpeed' : 50,
+'robotDexterity' : 50,
+'robotReliblity' : 50,
+'robotWeight' : 50,
+'collector' : 50,
+'climber' : 50,
+'indexer' : 50,
+'shooter' : 50,
+'programming' : 50,
+'vision' : 50,
+'stratagy' : 50,
+'riskiness' : 50
+}
+
+bot = robot('bottest/rechargebot.def', attribs)
+
+
+state:
+  True:
+#    print(bot.timeToDrive(75))

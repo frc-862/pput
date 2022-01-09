@@ -1,0 +1,21 @@
+name = 'game'
+foo = 1
+bar = foo
+stats = {}
+
+# Start in first state in file (auton)
+auton:
+  clock >= 15:
+    newState('tele')
+
+tele:
+  clock >= 120:
+    newState('endgame')
+
+endgame:
+  clock >= 150:
+    newState('stop')
+
+stop:
+
+stuff:

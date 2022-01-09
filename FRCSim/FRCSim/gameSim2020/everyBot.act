@@ -1,0 +1,109 @@
+name = 'everyBot'
+odds_of_breaking = 2.0
+oddsToCollect = 75.0
+startTime = 0
+ballsHeld = 3
+oddsOfBreakingLineUp = 2.5
+oddsOfBreakingLift = 10.0
+lineUpOdds = 90
+climbOdds = 80
+levelOdds = 25
+oddsToCollect = 90.0
+totalTime = 0
+ballsHeld = 3
+oddsLowShot = 95
+points = 0
+cycle = 0
+ballsScored = 0
+broken = False
+auto = True
+
+# Start in first state in file (waitForTele)
+
+forceStateAtTime('waitForTele', 15.5)
+forceStateAtTime('lineUp', 120)
+forceStateAtTime('report', 150)
+
+auton:
+  odds(100.0 - odds_of_breaking):
+    time = gauss(1.5, 0.5)
+    points += 5
+    newState('waitForTele')
+
+waitForTele:
+  clock > 15:
+    newState('shoot')
+    auto = False
+    oddsToCollect = 90
+
+shoot:
+  True:
+    sleepRange(.1, .7, .1)
+    if odds(oddsLowShot):
+      ballsHeld-=1
+      ballsScored += 1
+      points +=1
+    if ballsHeld <= 0:
+      cycle+=1
+      newState('driveToCollect')
+
+driveToCollect:
+  True:
+    sleepRange(0.1, 8, 0.75)
+    newState('collect')
+
+collect:
+  True:
+    sleepRange(0.1, 1, 0.25)
+    if odds(oddsToCollect):
+      ballsHeld += 1
+    if ballsHeld == 5:
+      newState('driveToShoot')
+
+driveToShoot:
+  True:
+    driveTime = gauss(8, .75)
+    sleepRange(0.1, 8.5, 1)
+    newState('shoot')
+
+lineUp:
+  not broken:
+    sleepRange(5.5, 7, 1.5)
+    if odds(oddsOfBreakingLineUp):
+      broken = True
+    elif odds(climbOdds):
+      newState('lift')
+  # Failed to lineup
+  True:
+    newState('waitForEnd')
+
+lift:
+  not broken:
+    sleepRange(2, 4.5, 1.5)
+    if odds(oddsOfBreakingLift):
+      broken = True
+    elif odds(climbOdds):
+        if odds(levelOdds):
+          points += 40
+        else:
+          points += 25
+        newState('waitForEnd')
+  # Failed to lineup
+  True:
+    newState('waitForEnd')
+
+waitForEnd:
+
+report:
+  True:
+    totalTime = clock - startTime
+    statistics[name] = {
+      'total_points': points,
+      'totalTime': totalTime,
+      'pput': points / totalTime,
+      'Balls Scored': ballsScored,
+      'cycle': cycle
+    }
+    newState('stop')
+
+stop:

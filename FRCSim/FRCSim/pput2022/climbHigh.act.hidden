@@ -1,0 +1,68 @@
+name = 'Climb High'
+oddsOfBreakingLineUp = 2.5
+oddsOfBreakingLift = 10.0
+oddsOfmonkeyHigh = 25
+lineUpOdds = 90
+climbOdds = 80
+totalTime = 0
+points = 0
+broken = False
+
+# Start in first state in file (waitForEnd)
+
+forceStateAtTime('report', 150)
+
+waitForEnd:
+  clock >= 120:
+    newState('lineUp')
+    startTime = clock
+
+lineUp:
+  not broken:
+    sleepRange(.1, 1, .4)
+    if odds(oddsOfBreakingLineUp):
+      broken = True
+    elif odds(climbOdds):
+      newState('liftMid')
+  # Failed to lineup
+  True:
+    points = 0
+    newState('report')
+
+liftMid:
+  not broken:
+    sleepRange(.5, 2.5, .6)
+    if odds(oddsOfBreakingLift):
+      broken = True
+    elif odds(climbOdds):
+        points=6
+        newState('report')
+  # Failed to lineup
+  True:
+    points = 0
+    newState('report')
+
+monkeyHigh:
+  not broken:
+    sleepRange(.5, 3.5, .6)
+    if odds(oddsOfmonkeyHigh):
+      broken = True
+    else:
+        points=10
+        newState('report')
+  # Failed to lineup
+  True:
+    points = 0
+    newState('report')
+
+report:
+  True:
+    totalTime = clock - startTime
+    statistics[name] = {
+      'total_points': points,
+      'totalTime': totalTime,
+      'pput': points / totalTime
+    }
+    newState('stop')
+
+stop:    

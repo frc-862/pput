@@ -1,0 +1,58 @@
+name = '3 ball auto'
+odds_of_breaking = 3.0
+startTime = 0
+ballsHeld = 3
+oddsInInner = 20
+oddsHighShot = 90
+points = 0
+ballsScored = 0
+
+# Start in first state in file (waitForTele)
+
+forceStateAtTime('report', 16)
+
+shoot:
+  True:
+    sleepRange(0.1, 0.75, 0.1)
+    ballsHeld -= 1
+    if odds(oddsHighShot):
+      ballsScored += 1
+      if odds(oddsInInner):
+        points +=6
+      else:
+        points +=4
+    if ballsHeld <= 0:
+      newState('drive')
+
+drive:
+  odds(100.0 - odds_of_breaking):
+    time = gauss(1.5, 0.5)
+    points += 5
+    newState('wait')
+
+  # Failed to drive
+  True:
+    newState('wait')
+
+wait:
+
+report:
+  True:
+    totalTime = clock - startTime
+    statistics[name] = {
+      'total_points': points,
+      'totalTime': totalTime,
+      'pput': points / totalTime,
+      'Balls Scored': ballsScored
+    }
+    newState('stop')
+
+stop:
+
+
+
+
+
+
+
+

@@ -1,0 +1,82 @@
+name = '5 ball auto'
+odds_of_breaking = 2.0
+oddsDrivingCorrect = 80
+oddsToCollect = 85.0
+startTime = 0
+ballsHeld = 3
+attemptCollect = 0
+oddsInInner = 20
+oddsHighShot = 90
+points = 0
+ballsScored = 0
+
+# Start in first state in file (waitForTele)
+
+forceStateAtTime('report', 16)
+
+driveToCollect:
+  True:
+    if odds(100.0 - odds_of_breaking):
+      points += 5
+      sleepRange(.5, 1, 0.25)
+      newState('collect')
+    else:
+      newState('wait')
+
+collect:
+  True:
+    if odds(oddsToCollect):
+      ballsHeld += 1
+    attemptCollect+=1
+    if attemptCollect == 2:
+      newState('driveToShoot')
+
+driveToShoot:
+  odds(oddsDrivingCorrect):
+    sleepRange(.2, 4, 0.25)
+    newState('aim')
+  True:
+    newState('wait')
+
+aim:
+  True:
+    sleepRange(0.1, 2.5, .5)
+    newState('shoot')
+
+shoot:
+  True:
+    sleepRange(0.1, 0.75, 0.1)
+    ballsHeld -= 1
+    if odds(oddsHighShot):
+      ballsScored += 1
+      if odds(oddsInInner):
+        points +=6
+      else:
+        points +=4
+    if ballsHeld <= 0 and attemptCollect<=0:
+      newState('driveToCollect')
+    elif attemptCollect>0 and ballsHeld <= 0:
+      newState('wait')
+
+wait:
+
+report:
+  True:
+    totalTime = clock - startTime
+    statistics[name] = {
+      'total_points': points,
+      'totalTime': totalTime,
+      'pput': points / totalTime,
+      'Balls Scored': ballsScored
+    }
+    newState('stop')
+
+stop:
+
+
+
+
+
+
+
+

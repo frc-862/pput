@@ -1,0 +1,152 @@
+name = '6 ball high shooting'
+odds_of_breaking = 2.0
+oddsToCollect = 90.0
+oddsToCollectAuto = 75.0
+startTime = 0
+ballsHeld = 3
+oddsOfBreakingLineUp = 2.5
+oddsOfBreakingLift = 10.0
+lineUpOdds = 90
+climbOdds = 80
+levelOdds = 25
+attemptCollect = 0
+oddsInInner = 20
+oddsHighShot = 90
+points = 0
+cycle = 0
+ballsScored = 0
+broken = False
+auto = True
+
+# Start in first state in file (waitForTele)
+
+forceStateAtTime('waitForTele', 15.5)
+forceStateAtTime('lineUp', 120)
+forceStateAtTime('report', 150)
+
+shoot:
+  True:
+    if ballsHeld > 0:
+      sleepRange(0.1, 0.75, 0.1)
+      ballsHeld -= 1
+      if odds(oddsHighShot):
+        ballsScored += 1
+        if odds(oddsInInner):
+          if auto:
+            points +=6
+          else:
+            cycle +=1
+            points +=3
+        else:
+          if auto:
+            points +=4
+          else:
+            cycle +=1
+            points +=2
+      if ballsHeld <= 0 and attemptCollect<=0:
+        newState('driveToCollectAuto')
+      elif attemptCollect>0 and ballsHeld <= 0 and auto:
+        newState('waitForTele')
+      elif ballsHeld <= 0:
+        cycle += 1
+        newState('driveToCollect')
+    else:
+      newState('driveToCollect')
+
+driveToCollectAuto:
+  True:
+    if odds(100.0 - odds_of_breaking):
+      points += 5
+      sleepRange(3, 4.5, 0.25)
+      newState('collectAuto')
+    else:
+      newState('waitForTele')
+
+collectAuto:
+  True:
+    if odds(oddsToCollectAuto):
+      ballsHeld += 1
+    attemptCollect+=1
+    if attemptCollect == 3:
+      newState('driveToShootAuto')
+
+driveToShootAuto:
+  True:
+    sleepRange(.2, 1, 0.2)
+    newState('aimAuto')
+
+aimAuto:
+  True:
+    sleepRange(0.1, 2.5, .5)
+    newState('shoot')
+
+waitForTele:
+  clock > 15:
+    newState('shoot')
+    auto = False
+    oddsToCollect = 90
+
+driveToCollect:
+  True:
+    sleepRange(0.1, 8, 0.75)
+    newState('collect')
+
+collect:
+  True:
+    sleepRange(0.1, 1, 0.25)
+    if odds(oddsToCollect):
+      ballsHeld += 1
+    if ballsHeld == 5:
+      newState('driveToShoot')
+
+driveToShoot:
+  True:
+    sleepRange(0.1, 8, 0.75)
+    newState('aim')
+
+aim:
+  True:
+    sleepRange(0.1, 3.5, 1)
+    newState('shoot')
+
+lineUp:
+  not broken:
+    sleepRange(5.5, 7, 1.5)
+    if odds(oddsOfBreakingLineUp):
+      broken = True
+    elif odds(climbOdds):
+      newState('lift')
+  # Failed to lineup
+  True:
+    newState('waitForEnd')
+
+lift:
+  not broken:
+    sleepRange(2, 4.5, 1.5)
+    if odds(oddsOfBreakingLift):
+      broken = True
+    elif odds(climbOdds):
+        if odds(levelOdds):
+          points += 40
+        else:
+          points += 25
+        newState('waitForEnd')
+  # Failed to lineup
+  True:
+    newState('waitForEnd')
+
+waitForEnd:
+
+report:
+  True:
+    totalTime = clock - startTime
+    statistics[name] = {
+      'total_points': points,
+      'totalTime': totalTime,
+      'pput': points / totalTime,
+      'Balls Scored': ballsScored,
+      'cycle': cycle
+    }
+    newState('stop')
+
+stop:

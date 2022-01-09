@@ -1,0 +1,61 @@
+name = 'shootLowTele'
+oddsToCollect = 90.0
+totalTime = 0
+ballsHeld = 0
+oddsLowShot = 95
+points = 0
+cycle = 0
+ballsScored = 0
+
+# Start in first state in file (auton)
+
+forceStateAtTime('report', 150)
+
+waitForTele:
+  clock > 15:
+    newState('driveToCollect')
+    startTime = clock
+
+driveToCollect:
+  True:
+    sleepRange(0.1, 8, 0.75)
+    newState('collect')
+
+collect:
+  True:
+    sleepRange(0.1, 1, 0.25)
+    if odds(oddsToCollect):
+      ballsHeld += 1
+    if ballsHeld == 5:
+      newState('driveToShoot')
+
+driveToShoot:
+  True:
+    driveTime = gauss(8, .75)
+    sleepRange(0.1, 8.5, 1)
+    newState('shoot')
+
+shoot:
+  True:
+    sleepRange(.1, .7, .1)
+    ballsHeld-=1
+    if odds(oddsLowShot):
+      ballsScored += 1
+      points +=1
+    if ballsHeld <= 0:
+      cycle+=1
+      newState('driveToCollect')
+
+report:
+  True:
+    totalTime = clock - startTime
+    statistics['Shoot Low'] = {
+      'total_points': points,
+      'totalTime': totalTime,
+      'pput': points / totalTime,
+      'Balls Scored': ballsScored,
+      'cycle': cycle
+    }
+    newState('stop')
+
+stop:

@@ -1,0 +1,33 @@
+name = 'drive_off_line'
+odds_of_breaking = 3.0
+startTime = 0
+
+# Start in first state in file (auton)
+
+forceStateAtTime('report', 16)
+
+auton:
+  clock < 15 and odds(100.0 - odds_of_breaking):
+    time = gauss(1.5, 0.5)
+    points = 5
+    newState('wait')
+
+  # Failed to drive
+  True:
+    points = 0
+    time = 1
+    newState('wait')
+
+wait:
+
+report:
+  True:
+    totalTime = clock - startTime
+    statistics['drive off line'] = {
+      'total_points': points,
+      'totalTime': totalTime,
+      'pput': points / totalTime
+    }
+    newState('stop')
+
+stop:
